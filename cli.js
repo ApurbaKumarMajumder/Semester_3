@@ -4,7 +4,8 @@
 // nodejs cli.js organize -> print tree command executed
 
 let helpFnObj = require("./commands/help");
-let treeFnObj = require("./commands/organize");
+const { organizeFn } = require("./commands/organize");
+let organizeFnObj = require("./commands/organize");
 let treeFnObj = require("./commands/tree");
 let inputArr = process.argv.slice(2);
 let command = inputArr[0];
@@ -14,10 +15,10 @@ switch (command) {
         helpFnObj.helpFn();
         break;
     case "tree" :
-        console.log("Tree command Executed with the path ", dirPath != undefiend ? dirPath : process.cwd());
+        treeFnObj.treeFn(dirPath);
         break;
     case "organize" :
-        console.log("Organize command executed ", dirPath != undefiend ? dirPath : process.cwd());
+        organizeFnObj.organizeFn(dirPath);
         break;
     default:
         console.log("Wrong command . Type help to see the list of all the commands");
